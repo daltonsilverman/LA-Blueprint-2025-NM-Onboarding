@@ -7,9 +7,11 @@ export default function Post({ username, body }) {
     <>
         <Text>
             Author:
+            {username}
         </Text>
         <Text>
             Body:
+            {body}
         </Text>
     </>
   );
@@ -17,5 +19,5 @@ export default function Post({ username, body }) {
 
 Post.propTypes = {
     username: PropTypes.string.isRequired,
-    body: <PropTypes className="string isRe">,</PropTypes>
+    body: PropTypes.string.isRequired,
 };
