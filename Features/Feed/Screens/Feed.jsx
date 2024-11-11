@@ -1,6 +1,6 @@
 import { Button, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import Post from '../Components/Post'
+import Post from './Components/Post'
 
 export default function Feed({ navigation }) {
   const GIVEN_POSTS = [
