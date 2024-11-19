@@ -13,10 +13,6 @@ export default function Post({ username, body }) {
             Body:
             {body}
         </Text>
-        <Text>
-            Date:
-            {date}
-        </Text>
     </>
   );
 }
@@ -24,5 +20,5 @@ export default function Post({ username, body }) {
 Post.propTypes = {
     username: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
 };

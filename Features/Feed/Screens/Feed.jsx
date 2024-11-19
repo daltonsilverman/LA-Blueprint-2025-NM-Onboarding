@@ -20,16 +20,19 @@ export default function Feed({ navigation }) {
       _id: 1,
       username: 'James',
       body: 'Mobile development is fun!',
+      time: '2023-10-24T00:41:59.057Z',
     },
     {
       _id: 2,
       username: 'Sidd',
       body: 'I just finished watching another movie. It was interesting, but kind of boring :(',
+      time: '2023-10-23T00:41:59.057Z',
     },
     {
       _id: 3,
       username: 'Jerry',
       body: 'I am excited to see everyone become friends!',
+      time: '2023-10-25T00:41:59.057Z',
     },
   ];
 
@@ -42,7 +45,7 @@ export default function Feed({ navigation }) {
       <Text>Posts</Text>
       <NewPostForm />
       {GIVEN_POSTS.map((post) => (
-        <Post key={post._id} username={post.username} body={post.body} />
+        <Post key={post._id} username={post.username} body={post.body} time = {post.time}/>
       ))}
       <Button
         title="To Landing"
