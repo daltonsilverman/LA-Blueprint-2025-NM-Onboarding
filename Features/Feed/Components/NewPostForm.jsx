@@ -1,11 +1,16 @@
 import { Button, TextInput } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function NewPostForm() {
     const [username, setUsername] = useState('');
     const [body, setBody] = useState('')
 
-    useEffect(() => console.log({ username, body }), [username, body])
+    const handleAddPost = () => {
+      addNewPost({ username, body });
+      setUsername('');
+      setBody('');
+    }
 
 
     return (
@@ -21,4 +26,8 @@ export default function NewPostForm() {
             <Button title="Print" />
         </>
     );
+}
+
+NewPostForm.propTypes = {
+  addNewPost: PropTypes.func.isRequired,
 }
