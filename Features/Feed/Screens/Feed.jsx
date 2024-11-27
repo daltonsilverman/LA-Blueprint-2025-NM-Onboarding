@@ -11,27 +11,28 @@ export default function Feed({ navigation }) {
         _id: 1,
         username: 'James',
         body: 'Mobile development is fun!',
-        // time: '2023-10-24T00:41:59.057Z',
+        time: '10/24/23 5:41:59 PM',
       },
       {
         _id: 2,
         username: 'Sidd',
         body: 'I just finished watching another movie. It was interesting, but kind of boring :(',
-        // time: '2023-10-23T00:41:59.057Z',
+        time: '10/23/23 5:41:59 PM',
       },
       {
         _id: 3,
         username: 'Jerry',
         body: 'I am excited to see everyone become friends!',
-        // time: '2023-10-25T00:41:59.057Z',
+        time: '10/25/23 5:41:59 PM',
       },
     ],
   );
   const [newId, setNewId] = useState(0);
 
   const addNewPost = (newPost) => {
+    const currentDate = new Date().toLocaleString();
     const updatedPosts = [...posts];
-    updatedPosts.push({ ...newPost, _id: newId });
+    updatedPosts.push({ ...newPost, time: currentDate, _id: newId });
     setPosts(updatedPosts);
     setNewId((id) => (id + 1));
   };
@@ -40,12 +41,26 @@ export default function Feed({ navigation }) {
     navigation.navigate('Landing');
   };
 
+  const navigateToPostDetails = (author, body, time) => {
+    navigation.push('PostDetails', {
+      author,
+      body,
+      time,
+    });
+  };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Posts</Text>
       <NewPostForm addNewPost={addNewPost} />
       {posts.map((post) => (
-        <Post key={post._id} username={post.username} body={post.body} />
+        <Post
+          key={post._id}
+          username={post.username}
+          body={post.body}
+          time={post.time}
+          getPostDetails={navigateToPostDetails}
+        />
       ))}
       <Button
         title="To Landing"
@@ -58,5 +73,6 @@ export default function Feed({ navigation }) {
 Feed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
+    push: PropTypes.func,
   }).isRequired,
 };

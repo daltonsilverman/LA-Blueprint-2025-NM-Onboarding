@@ -22,21 +22,30 @@ const styles = StyleSheet.create({
   bodyText: {
     paddingBottom: 25,
   },
+
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
 });
 
-export default function Post({ username, body }) {
+export default function Post({
+  username, body, time, getPostDetails,
+}) {
+  const handleGetDetails = () => {
+    getPostDetails(username, body, time);
+  };
   return (
     <View style={styles.postContainer}>
       <Text style={styles.authorText}>
         {username}
       </Text>
-      <View>
+      <View style={styles.rowContainer}>
         <Text style={styles.bodyText}>
           {body}
         </Text>
-        <Button title="+" />
+        <Button title="+" onPress={handleGetDetails} />
       </View>
-
     </View>
   );
 }
@@ -44,5 +53,6 @@ export default function Post({ username, body }) {
 Post.propTypes = {
   username: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  // time: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  getPostDetails: PropTypes.func.isRequired,
 };
