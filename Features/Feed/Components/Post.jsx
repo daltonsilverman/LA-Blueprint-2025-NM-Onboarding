@@ -1,4 +1,3 @@
-// Features/Feed/Components/Post.jsx
 import {
   Text, View, StyleSheet, Button,
 } from 'react-native';
@@ -9,23 +8,33 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     borderColor: 'lightgrey',
-    backgroundColor: 'ghostwhite',
     width: '100%',
-    paddingHorizontal: 50,
+    paddingLeft: 50,
     borderBottomWidth: 1,
+    backgroundColor: 'ghostwhite',
   },
   authorText: {
     fontWeight: 'bold',
     paddingVertical: 10,
   },
-
   bodyText: {
     paddingBottom: 25,
   },
-
   rowContainer: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center', // Added to ensure items align properly in a row
+  },
+  columnContainer: {
+    flex: 0, // Correct usage: use a number value (0 means no growing/shrinking)
+    display: 'flex',
+    flexDirection: 'column',
+    marginRight: 20, // Removed quotes, margin is in number values
+  },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    flex: 1, // Ensures this container takes the remaining space
   },
 });
 
@@ -37,14 +46,18 @@ export default function Post({
   };
   return (
     <View style={styles.postContainer}>
-      <Text style={styles.authorText}>
-        {username}
-      </Text>
       <View style={styles.rowContainer}>
-        <Text style={styles.bodyText}>
-          {body}
-        </Text>
-        <Button title="+" onPress={handleGetDetails} />
+        <View style={styles.columnContainer}>
+          <Text style={styles.authorText}>
+            {username}
+          </Text>
+          <Text style={styles.bodyText}>
+            {body}
+          </Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button title="+" onPress={handleGetDetails} />
+        </View>
       </View>
     </View>
   );

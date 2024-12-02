@@ -42,11 +42,13 @@ export default function NewPostForm({ addNewPost }) {
 
   return (
     <View style={styles.formContainer}>
-      <TextInput
-        placeholder="What's Happening?"
-        onChangeText={setBody}
-        value={body}
-      />
+      <View style={styles.rowContainer}>
+        <TextInput
+          placeholder="What's Happening?"
+          onChangeText={setBody}
+          value={body}
+        />
+      </View>
       <View style={styles.rowContainer}>
         <TextInput
           placeholder="Who's this?"
